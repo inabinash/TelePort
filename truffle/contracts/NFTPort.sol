@@ -36,7 +36,7 @@ contract NFTPort is ERC721URIStorage, Ownable {
     mapping(address=>uint) public addressToCSPId;//CSP_Address to CSP_ID
     
     //create new CSP
-    function createCSP(string memory _name, uint id) public onlyOwner {
+    function createCSP(string memory _name, uint id) public  {
         CSP storage newCSP = allCSP[id]; 
         newCSP.id = id;
         newCSP.name = _name;
@@ -56,17 +56,18 @@ contract NFTPort is ERC721URIStorage, Ownable {
     
     function registerMobileNo(string  memory _cspName, uint _mobileNo, string memory _tokenURI, address user) public returns(uint256){
         uint256 _cspId= allCSPName[_cspName];
-        require(allCSP[_cspId].owner == msg.sender, "You are not the owner of this CSP");
+        address _cspAddress= allCSP[_cspId].owner;
+        //require(allCSP[_cspId].owner == msg.sender, "You are not the owner of this CSP");
         uint256 tokenId = _tokenIds.current();
         allMobileNo[_cspId].push(_mobileNo);
         MobileNo storage newMobileNo = allMobileNoDetails[_mobileNo];
         newMobileNo.tokenId = tokenId;
         newMobileNo.mobileNo = _mobileNo;
-        newMobileNo.owner = msg.sender;
+        newMobileNo.owner = _cspAddress;
         newMobileNo.user = user;
         allMobileNoDetails[_mobileNo] = newMobileNo;
         _tokenIds.increment();
-        _mint(msg.sender,tokenId);
+        _mint(_cspAddress,tokenId);
         _setTokenURI(tokenId, _tokenURI);
         return tokenId;
     }

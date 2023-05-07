@@ -17,14 +17,17 @@ const createMobileNo= async(
     account,
     mobileNo,
     CSPName,
-    
+    tokenURI,
     user
     )=>{
     if(!contract)
-        return false;
-
-    const res= await contract.methods.createMobileNo(CSPName,mobileNo,user)
+    return false;
+    const _csp=await contract.methods.getCSPDetails(CSPName).call();
+    console.log(_csp);
+    console.log(_csp.owner);
+    const res= await contract.methods.registerMobileNo(CSPName,mobileNo,tokenURI,user)
     .send({from:account});
+    console.log(res)
     return res;
     }
 

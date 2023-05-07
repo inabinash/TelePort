@@ -4,6 +4,7 @@ const getAllMobileNo =async (contract , CSPName)=>{
     const res= await contract.methods.getAllMobileNo(CSPName).call();
     return await Promise.all(
         res.map(async (item)=>{
+
           const {tokenId,mobileNo,owner,user}=await contract.methods.getMobileNoDetails(item).call(); 
           return {tokenId,mobileNo,user,owner}; 
     }));
@@ -14,11 +15,15 @@ const getAllCSP =async (contract)=>{
     if(!contract) return false;
     
     const res= await contract.methods.getAllCSPIds().call();
+    console.log(res);
     return await Promise.all(
         res.map(async (item)=>{
             
-            const {CSPId,CSPName,CSPAddress}=await contract.methods.getCSPDetails(item).call(); 
-            return {CSPId,CSPName,CSPAddress};
+            const _cspName=await contract.methods.getCSPNameById(item).call();
+            
+            console.log(_cspName,item);
+            const obj=await contract.methods.getCSPDetails(_cspName).call(); 
+            return obj;
         })
     );
     
@@ -29,6 +34,7 @@ const getCSPByAddress =async (contract , address)=>{
     if(!contract ) return false;
 
     const res= await contract.methods.getCSPByAddress(address).call();
+    console.log(res);
     const {CSPId,CSPName,CSPAddress}=await contract.methods.getCSPDetails(res).call(); 
     return {CSPId,CSPName,CSPAddress};
 }
@@ -43,7 +49,7 @@ const getCSPByID =async (contract , _CSPId)=>{
 const getCSPIdFromName = async (contract , CSPName)=>{
     if(!contract ) return false;
     const res= await contract.methods.getCSPIdByName(CSPName).call();
-    return res;
+    return await res;
 }
 
 const getCSPNameById = async (contract , CSPId)=>{
@@ -58,6 +64,13 @@ const getCSPIdByAddress = async (contract , address)=>{
     return res;
 }
 
+const getMobileNoDetails = async (contract, _mobileNo)=>{
+    if(!contract) return false;
+    const res = await contract.methods.getMobileNoDetails(_mobileNo).call();
+    console.log("The Mobile no deatils of ",_mobileNo," is ",res);
+    return res;
+
+}
 
 export {getAllMobileNo,
         getAllCSP,
@@ -65,5 +78,6 @@ export {getAllMobileNo,
         getCSPByID,
         getCSPIdFromName,
         getCSPNameById,
-        getCSPIdByAddress
+        getCSPIdByAddress,
+        getMobileNoDetails
     }

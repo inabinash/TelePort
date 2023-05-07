@@ -10,7 +10,11 @@ const Registercsp= ()=>{
   const [Id,setId]=useState(0);
   const [Name,setName]=useState("");
 
-
+  const handleView= ()=>{
+    getAllCSP(Contract).then((data)=>{
+      console.log(data);
+    })
+  }
     const handleRegister=async ()=>{
       const obj=await createCSP(Contract,account.currentAccount,Name,Id);
       console.log(obj);
@@ -85,6 +89,7 @@ const Registercsp= ()=>{
             >
               Register 
             </button>
+            <button onClick={handleView}>View</button>
           </div>
         </div>
        
