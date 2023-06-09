@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTPort is ERC721URIStorage, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    //using Counters for Counters.Counter;
+    //Counters.Counter private _tokenIds;
 
     constructor() ERC721("NFTPort", "NFTP") {}
 
@@ -34,6 +34,7 @@ contract NFTPort is ERC721URIStorage, Ownable {
     mapping(string => uint) public allCSPName; // CSP_NAME to CSP_ID
     mapping(uint=>mapping(uint=>string)) public tokenURIList;
     mapping(address=>uint) public addressToCSPId;//CSP_Address to CSP_ID
+    //mapping(uint=>mapping(uint=>string)) public tokenURIList;
     
     //create new CSP
     function createCSP(string memory _name, uint id) public  {
@@ -41,7 +42,7 @@ contract NFTPort is ERC721URIStorage, Ownable {
         newCSP.id = id;
         newCSP.name = _name;
         newCSP.owner = msg.sender;
-        newCSP.allMobileNo = new uint[](0);
+        //newCSP.allMobileNo = new uint[](0);
         allCSPIds.push(id);
         CSPId_Name[id]=_name;
         allCSPName[_name] = id;
@@ -58,7 +59,8 @@ contract NFTPort is ERC721URIStorage, Ownable {
         uint256 _cspId= allCSPName[_cspName];
         address _cspAddress= allCSP[_cspId].owner;
         //require(allCSP[_cspId].owner == msg.sender, "You are not the owner of this CSP");
-        uint256 tokenId = _tokenIds.current();
+        
+        uint tokenId = _cspId*1000+_mobileNo*100;
         allMobileNo[_cspId].push(_mobileNo);
         MobileNo storage newMobileNo = allMobileNoDetails[_mobileNo];
         newMobileNo.tokenId = tokenId;
@@ -66,7 +68,7 @@ contract NFTPort is ERC721URIStorage, Ownable {
         newMobileNo.owner = _cspAddress;
         newMobileNo.user = user;
         allMobileNoDetails[_mobileNo] = newMobileNo;
-        _tokenIds.increment();
+        tokenURIList[_cspId][tokenId] = _tokenURI;
         _mint(_cspAddress,tokenId);
         _setTokenURI(tokenId, _tokenURI);
         return tokenId;
@@ -77,12 +79,13 @@ contract NFTPort is ERC721URIStorage, Ownable {
     //Remove the number from the old CSP and add it to the new CSP
 
 
-    function transferMobileNo(string memory _cspName, uint _mobileNo, string memory  _newOwner, uint tokenId) public {
+    function transferMobileNo(string memory _cspName, uint _mobileNo, string memory  _newOwner) public {
         uint256 _cspId= allCSPName[_cspName];
         uint256 _newCspId= allCSPName[_newOwner];
-        require(allCSP[_cspId].owner == msg.sender, "You are not the owner of this CSP");
-        require(allCSP[_newCspId].owner != msg.sender, "You are the owner of this CSP");
-        allMobileNo[_cspId].push(_mobileNo);
+        require(allMobileNoDetails[_mobileNo].user == msg.sender, "You are not the owner of this CSP");
+        //require(allCSP[_newCspId].owner != msg.sender, "You are the owner of this CSP");
+        uint tokenId = allMobileNoDetails[_mobileNo].tokenId;
+        allMobileNo[_newCspId].push(_mobileNo);
         allMobileNoDetails[_mobileNo].owner = allCSP[_newCspId].owner;
         for(uint i=0;i<allMobileNo[_cspId].length;i++){
             if(allMobileNo[_cspId][i] == _mobileNo){
@@ -129,6 +132,9 @@ contract NFTPort is ERC721URIStorage, Ownable {
     }
     function getCSPIdByAddress(address _address) public view returns(uint) {
         return addressToCSPId[_address];
+    }
+    function getTokenURI(uint _cspId, uint tokenId) public view returns(string memory){
+        return tokenURIList[_cspId][tokenId];
     }
 }
 

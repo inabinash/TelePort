@@ -40,7 +40,7 @@ const Web3Provider = ({ children }) => {
        console.log('We have the ethereum object');
     }
     var web3 = new Web3(window.ethereum);
-
+    
     const accounts = await ethereum.request({ method: 'eth_accounts' });
     const chain =  await web3.eth.getChainId();
     console.log("Chain Id",chain);

@@ -4,7 +4,7 @@ import { createMobileNo } from "../context/useContract/writeContract";
 import client from "../utils/ipfs";
 const Issuenumberform= ()=>{
    const {Contract,account} = useContext(Web3Context);
-   const [Number,setNumber]=useState(0);
+   var number=0;
    const [Name,setName]=useState("");
    const[coverImageURI,setCoverImageURI] = useState("")
    const[Coverimage,setCoverImage] = useState("")
@@ -18,9 +18,13 @@ const Issuenumberform= ()=>{
     }
     const UploadImage = async (e) => {
       e.preventDefault();
-      const num=parseInt(Math.random()*1000);
-      setNumber(num);
+      var num= parseInt(Math.random()*1000);
+      console.log("Num value is ",num)
+      number=num;
+      
+      console.log(number);
      
+        
         const data = new FormData();
         data.append('file', Coverimage);
         data.append('upload_preset', 'mystiq');
@@ -66,10 +70,11 @@ const Issuenumberform= ()=>{
         const str = 'ipfs://';
         const finalResult = str.concat(String(result.path));
         // console.log(result)
-      //  console.log(finalResult);
+        console.log("Generated TokenURI",finalResult);
       alert('NFT Data added'); //tokenURI=finalResult 
-      console.log("Mobile Number value in Issuing :",Number)
-      await createMobileNo(Contract,account.currentAccount,Number,Name,finalResult,account.currentAccount);
+      alert(`Mobile number issued ${number}`);
+      console.log("Number in handledata",number);
+      await createMobileNo(Contract,account.currentAccount,number,Name,finalResult,account.currentAccount);
       alert('NFT created')
       
       
@@ -104,7 +109,7 @@ const Issuenumberform= ()=>{
                   
                 />
               </div>
-              <div className="w-full flex flex-col justify-evenly items-center">
+              {/* <div className="w-full flex flex-col justify-evenly items-center">
                 <label
                   htmlFor="Number"
                   className="w-2/4 p-2 text-white text-left"
@@ -116,11 +121,11 @@ const Issuenumberform= ()=>{
                   placeholder="Mobile No"
                   type="number"
                   className="w-2/4 p-2 rounded-md"
-                  value={Number}
+                  value={number}
                   readOnly
                   
                 />
-              </div>
+              </div> */}
               <div className="w-full flex flex-col justify-evenly items-center">
                 <label
                   htmlFor="seller"
@@ -162,6 +167,7 @@ const Issuenumberform= ()=>{
               Issue
             </button>
           </div>
+          
         </div>
        
         

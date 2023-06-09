@@ -8,7 +8,7 @@ const Portnumber= ()=>{
     const [Old,setOld]=useState("");
     const [Name,setName]=useState("");
     const [Number,setNumber]=useState(0);
-    const [TokenId,setTokenId]=useState(0);
+    
     //const [NewAddress,setNewAddress]=useState("");
     const handlePort=()=>{
        // find the csp address from csp name 
@@ -43,8 +43,9 @@ const Portnumber= ()=>{
       //   })
       // })
 
-      transferMobileNo(Contract,account.currentAccount,Old,Number,Name,TokenId).then((res)=>{
+      transferMobileNo(Contract,account.currentAccount,Old,Number,Name).then((res)=>{
         console.log(res);
+        alert("Mobile Number "+Number+"Ported Successfully from "+Old+" to "+Name+"")
       })
       
       
@@ -91,7 +92,7 @@ const Portnumber= ()=>{
                   onChange={(e)=>{setNumber(e.target.value)}}
                   value={Number}                 
                 />
-                <label
+                {/* <label
                   htmlFor="wallet"
                   className="w-2/4 p-2 text-white text-left"
                 >
@@ -104,7 +105,7 @@ const Portnumber= ()=>{
                   className="w-2/4 p-2 rounded-md"
                   onChange={(e)=>{setTokenId(e.target.value)}}
                   value={TokenId}                 
-                />
+                /> */}
               </div>
               <div className="w-full flex flex-col justify-evenly items-center">
                 <label

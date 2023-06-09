@@ -9,7 +9,7 @@ const NFTPort = artifacts.require("NFTPort");
 
 module.exports = async function (callback) {
   const deployed = await NFTPort.deployed();
-
+console.log(deployed)
   const currentValue = (await deployed.read()).toNumber();
   console.log(`Current NFTPort value: ${currentValue}`);
 

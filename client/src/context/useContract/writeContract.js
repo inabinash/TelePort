@@ -3,7 +3,7 @@ const createCSP= async(contract,account , CSPName ,CSPId)=>{
     if(!contract) 
     return false;
     console.log("contract",contract);
-    //console.log("contract Address",contract._address);
+    console.log("contract Address",contract._address);
     const res= await contract.methods.createCSP(CSPName,CSPId)
     .send({from:account});
     console.log(res);
@@ -25,6 +25,8 @@ const createMobileNo= async(
     const _csp=await contract.methods.getCSPDetails(CSPName).call();
     console.log(_csp);
     console.log(_csp.owner);
+    console.log("Hi from the write File the mobile number we got is ",mobileNo)
+
     const res= await contract.methods.registerMobileNo(CSPName,mobileNo,tokenURI,user)
     .send({from:account});
     console.log(res)
@@ -39,11 +41,11 @@ const transferMobileNo= async(
     _cspName,
     _mobileNo,
     _newOwner,
-    tokenId
+   
     )=>{
     if(!contract) 
     return false;
-    const res= await contract.methods.transferMobileNo(_cspName,_mobileNo,_newOwner,tokenId)
+    const res= await contract.methods.transferMobileNo(_cspName,_mobileNo,_newOwner)
     .send({from:account});
     return res;
 }

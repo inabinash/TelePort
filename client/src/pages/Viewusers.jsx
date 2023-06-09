@@ -4,14 +4,22 @@ import { useContext ,useState } from 'react';
 import Web3Context from '../context';
 import {getAllMobileNo,getCSPNameById,getCSPIdByAddress} from '../context/useContract/readContract';
 const Viewusers=()=>{
+    const [users,setUser]=useState([]);
     const {Contract,account} = useContext(Web3Context);
     const _cspAddress=account.currentAccount;
     console.log("Current Address : ",_cspAddress);
+    const printValue=()=>{
+        //e.preventDefault();
+        console.log("User value updated to :",users);
+        users.map((user)=>{ return <h1>{user.address}</h1>})
+    }
     getCSPIdByAddress(Contract,_cspAddress)
             .then((_cspId)=>{
                 getCSPNameById(Contract,_cspId).then((_cspName)=>{
                     getAllMobileNo(Contract,_cspName).then((res)=>{
                         console.log(res);
+                        //setUser(res);
+                        
                     })
                 })
             })
@@ -36,6 +44,7 @@ const Viewusers=()=>{
         <div>
             <Navbar />
             <h1>View Users</h1>
+            {/* {this.printValue()} */}
         </div>
     )
 }
