@@ -27,7 +27,7 @@ const Mainpage = () => {
               On Chain Telecom Services 
             </h1>
             <p>
-              Issue number from TelePort
+              Issue number from
             </p>
             </div>
             <div className={styles.mainpageButtons}>
@@ -45,7 +45,7 @@ const Mainpage = () => {
           </div>
           <div className={styles.mainpageRight}>
           <img
-            src="https://res.cloudinary.com/dgy8ybeoy/image/upload/v1659277815/NFTDocket_Hero_mqqvsn.png"
+            src="https://res.cloudinary.com/dsmiomcjv/image/upload/v1686378114/teleport_r1zls0.jpg" alt =""
           />
         </div>
       </div>
