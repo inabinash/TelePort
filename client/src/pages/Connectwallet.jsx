@@ -38,7 +38,7 @@ const Connectwallet = () => {
           </div>
         </div>
         <div className={styles.mainpageRight}>
-          <img src="https://res.cloudinary.com/dgy8ybeoy/image/upload/v1659277815/NFTDocket_Hero_mqqvsn.png" />
+          <img src="https://res.cloudinary.com/dsmiomcjv/image/upload/v1686378114/teleport_r1zls0.jpg" alt =""/>
         </div>
       </div>
     </div>

@@ -24,14 +24,10 @@ const Mainpage = () => {
         <div className={styles.mainpageLeft}> {/* Use the CSS module class */}
           <div className={styles.mainpageText}> {/* Use the CSS module class */}
             <h1>
-              On-Chain Warranties for Products
+              On Chain Telecom Services 
             </h1>
             <p>
-              Free up your cupboard spaces and store your warranties in the
-              digital world in the form of NFTs having proper ownership proof
-              over it. Now the warranty is not a piece of paper but a form of
-              token. Start issuing warranties for your products by registering
-              below.
+              Issue number from TelePort
             </p>
             </div>
             <div className={styles.mainpageButtons}>
