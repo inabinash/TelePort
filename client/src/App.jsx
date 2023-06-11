@@ -1,5 +1,5 @@
 import React ,{useEffect,useContext}from 'react'
-
+import ViewCSP from './pages/ViewCSP';
 import Connectwallet from "./pages/Connectwallet";
 import Issuenumberform from "./pages/Issuenumberform";
 import Mainpage from "./pages/Mainpage";
@@ -32,6 +32,7 @@ return (
       <Route path='/register' element={<Hoc><Registercsp /></Hoc>}/>
       <Route path='/csp' element={<Hoc><Csp /></Hoc>}/>
       <Route path='/view' element={<Hoc><Viewusers /></Hoc>}/>
+      <Route path='/viewCSP' element={<Hoc><ViewCSP /></Hoc>}/>
     </Routes>
   </div>
 )
