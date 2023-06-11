@@ -8,8 +8,8 @@ const Viewusers=()=>{
     const {Contract,account} = useContext(Web3Context);
     const _cspAddress=account.currentAccount;
     console.log("Current Address : ",_cspAddress);
-    const printValue=()=>{
-        //e.preventDefault();
+    const printValue=(e)=>{
+        e.preventDefault();
         console.log("User value updated to :",users);
         users.map((user)=>{ return <h1>{user.address}</h1>})
     }
