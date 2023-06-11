@@ -22,7 +22,7 @@ const Web3Provider = ({ children }) => {
       const accounts =  await ethereum.request({
         method: 'eth_requestAccounts',
       });
-      
+      localStorage.setItem('account',accounts);
       //window.location.href = `/main`;
       console.log('Connected', accounts);
     } catch (error) {
