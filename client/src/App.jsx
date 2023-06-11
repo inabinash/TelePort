@@ -10,6 +10,7 @@ import Csp from "./pages/Csp";
 import Viewusers from './pages/Viewusers';
 import { Route, Routes } from "react-router-dom";
 import Web3Context from './context';
+import Hoc from './hoc/hoc';
 
 export default function App() {
   // const { checkIfWalletIsConnected,Contract,account} = useContext(Web3Context);
@@ -24,13 +25,13 @@ return (
   <div>
     <Routes>
       <Route path='/' element={<Connectwallet />} />
-      <Route path='/issue' element={<Issuenumberform/>}/>
-      <Route path='/main' element={<Mainpage />} />
-      <Route path='/user' element={<User />}/>
-      <Route path='/port' element={<Portnumber/>}/>
-      <Route path='/register' element={<Registercsp/>}/>
-      <Route path='/csp' element={<Csp/>}/>
-      <Route path='/view' element={<Viewusers/>}/>
+      <Route path='/issue' element={<Hoc><Issuenumberform/></Hoc>}/>
+      <Route path='/main' element={<Hoc><Mainpage /></Hoc>} />
+      <Route path='/user' element={<Hoc><User /></Hoc>}/>
+      <Route path='/port' element={<Hoc><Portnumber/></Hoc>}/>
+      <Route path='/register' element={<Hoc><Registercsp/></Hoc>}/>
+      <Route path='/csp' element={<Hoc><Csp/></Hoc>}/>
+      <Route path='/view' element={<Hoc><Viewusers/></Hoc>}/>
     </Routes>
   </div>
 )
