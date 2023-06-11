@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Hoc({children}) {
     const navigate=useNavigate();
   useEffect(()=>{
-    const account=localStorage.getItem('account');
+    const account=localStorage.getItem('currAccount');
     if(!account){
         navigate('/');
     }

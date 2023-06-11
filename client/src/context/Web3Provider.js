@@ -23,7 +23,7 @@ const Web3Provider = ({ children }) => {
       const accounts =  await ethereum.request({
         method: 'eth_requestAccounts',
       });
-      localStorage.setItem('account',accounts);
+      localStorage.setItem('currAccount',accounts[0]);
       navigate('/main');
       //window.location.href = `/main`;
       console.log('Connected', accounts);
@@ -80,7 +80,6 @@ const Web3Provider = ({ children }) => {
         checkIfWalletIsConnected,
         account,
         Contract,
-    
       }}
     >
       {children}

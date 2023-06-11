@@ -25,13 +25,13 @@ return (
   <div>
     <Routes>
       <Route path='/' element={<Connectwallet />} />
-      <Route path='/issue' element={<Hoc><Issuenumberform/></Hoc>}/>
+      <Route path='/issue' element={<Hoc><Issuenumberform /></Hoc>}/>
       <Route path='/main' element={<Hoc><Mainpage /></Hoc>} />
       <Route path='/user' element={<Hoc><User /></Hoc>}/>
-      <Route path='/port' element={<Hoc><Portnumber/></Hoc>}/>
-      <Route path='/register' element={<Hoc><Registercsp/></Hoc>}/>
-      <Route path='/csp' element={<Hoc><Csp/></Hoc>}/>
-      <Route path='/view' element={<Hoc><Viewusers/></Hoc>}/>
+      <Route path='/port' element={<Hoc><Portnumber /></Hoc>}/>
+      <Route path='/register' element={<Hoc><Registercsp /></Hoc>}/>
+      <Route path='/csp' element={<Hoc><Csp /></Hoc>}/>
+      <Route path='/view' element={<Hoc><Viewusers /></Hoc>}/>
     </Routes>
   </div>
 )
