@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import NFTPort from '../contracts/NFTPort.json';
 import Web3Context from './index';
 import Web3 from 'web3';
+import { useNavigate } from 'react-router-dom/dist/umd/react-router-dom.development';
 
 const Web3Provider = ({ children }) => {
   const [account, setAccount] = useState({
@@ -10,7 +11,7 @@ const Web3Provider = ({ children }) => {
     currentAccount: null,
   });
   const [Contract, setContract] = useState('');
-  
+  const navigate=useNavigate();
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -23,6 +24,7 @@ const Web3Provider = ({ children }) => {
         method: 'eth_requestAccounts',
       });
       localStorage.setItem('account',accounts);
+      navigate('/main');
       //window.location.href = `/main`;
       console.log('Connected', accounts);
     } catch (error) {
