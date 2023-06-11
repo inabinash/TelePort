@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import Web3Context from "../context";
+import { FaChevronRight } from "react-icons/fa";
+import styles from './Mainpage.module.css';
 
 const Mainpage = () => {
   const navigate = useNavigate();
@@ -18,38 +20,35 @@ const Mainpage = () => {
   return (
     <>
       <Navbar walletAddress="Abinash" />
-      <div className="w-full h-screen bg-new-secondary flex justify-center items-center">
-        <div className="left w-1/2 ml-32">
-          <div className="flex flex-col justify-start items-start">
-            <div className="title font-bold text-4xl text-black">
+      <div className={styles.mainpageContainer}> {/* Use the CSS module class */}
+        <div className={styles.mainpageLeft}> {/* Use the CSS module class */}
+          <div className={styles.mainpageText}> {/* Use the CSS module class */}
+            <h1>
               On-Chain Warranties for Products
-            </div>
-            <div className="info mt-5">
+            </h1>
+            <p>
               Free up your cupboard spaces and store your warranties in the
               digital world in the form of NFTs having proper ownership proof
               over it. Now the warranty is not a piece of paper but a form of
               token. Start issuing warranties for your products by registering
               below.
+            </p>
             </div>
-            <div className="buttons w-full mt-8 flex justify-start items-center">
-              <button
-                className="bg-blue-500 w-36 text-white p-2 text-center rounded-2xl mr-4"
+            <div className={styles.mainpageButtons}>
+              <button className={styles.btn1}
                 onClick={handleCSP}
               >
-                Login as CSP
+                Login as CSP <FaChevronRight className={styles.i}/>
               </button>
-              <button
-                className="bg-blue-500 w-36 text-white p-2 text-center rounded-2xl"
+              <button className={styles.btn2}
                 onClick={handleCustomer}
               >
-                Customer
+                Customer <FaChevronRight className={styles.i} />
               </button>
             </div>
           </div>
-        </div>
-        <div className="right w-1/2 h-full flex justify-center items-center">
+          <div className={styles.mainpageRight}>
           <img
-            className="w-96"
             src="https://res.cloudinary.com/dgy8ybeoy/image/upload/v1659277815/NFTDocket_Hero_mqqvsn.png"
           />
         </div>
