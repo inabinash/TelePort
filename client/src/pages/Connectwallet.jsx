@@ -11,7 +11,7 @@ const Connectwallet = () => {
   const handleConnect = () => {
     connectWallet();
     checkIfWalletIsConnected();
-
+    
     console.log("Account Length", account);
     navigate("/main");
   };

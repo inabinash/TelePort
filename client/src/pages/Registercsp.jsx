@@ -1,12 +1,13 @@
 import React from "react";
 import Web3Context from "../context";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Form.module.css";
 import { createCSP } from "../context/useContract/writeContract";
 import { getAllCSP } from "../context/useContract/readContract";
 const Registercsp = () => {
   const { Contract, account } = useContext(Web3Context);
-
+ const navigate= useNavigate();
   const [Id, setId] = useState(0);
   const [Name, setName] = useState("");
 
@@ -15,12 +16,16 @@ const Registercsp = () => {
       console.log(data);
     });
   };
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    console.log("Hi I am working");
     const obj = await createCSP(Contract, account.currentAccount, Name, Id);
     console.log(obj);
-    const data = await getAllCSP(Contract);
-    console.log(data);
+    // const data = await getAllCSP(Contract);
+    // console.log(data);
+    navigate('/csp');
   };
+
 
   return (
     <div className={styles.form}>
@@ -30,7 +35,7 @@ const Registercsp = () => {
         {" "}
         {/* Use the CSS module class */}
         <h2 className={styles.formHeading}>Register Company</h2>
-        <form>
+        <form onSubmit={handleRegister}>
           <div className={styles.formGroup}>
             <label htmlFor="wallet">Company Wallet Address</label>
             <input

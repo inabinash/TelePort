@@ -6,6 +6,7 @@ const createCSP= async(contract,account , CSPName ,CSPId)=>{
     console.log("contract Address",contract._address);
     const res= await contract.methods.createCSP(CSPName,CSPId)
     .send({from:account});
+    alert(`${CSPName} with ${CSPId} registered successfully`);
     console.log(res);
     return res;
 
