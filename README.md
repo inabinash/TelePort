@@ -1,4 +1,4 @@
-# [YouTube Video Link](https://youtu.be/Qr5-2c9jkhI)
+# [YouTube Video Link](https://www.youtube.com/watch?v=Qr5-2c9jkhI)
 
 ## [View Live](https://tele-service-qifoof4i4-inabinash.vercel.app/)
 
