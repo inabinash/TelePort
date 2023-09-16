@@ -35,12 +35,10 @@ $ npm start
 
 From there, follow the instructions on the hosted React app. It will walk you through using Truffle and Ganache to deploy the `SimpleStorage` contract, making calls to it, and sending transactions to change the contract's state.
 
-## FAQ
+![image](https://github.com/inabinash/TelePort/assets/78683499/d8280bcd-1b98-476f-953e-5c70cb20d0f1)
+![image](https://github.com/inabinash/TelePort/assets/78683499/25947560-d20c-42bd-84de-32f857d8b7bd)
+![image](https://github.com/inabinash/TelePort/assets/78683499/5cc00871-7a36-4b6c-b694-89a8c0abea81)
+![image](https://github.com/inabinash/TelePort/assets/78683499/f45828a4-21b8-4a4a-82c8-3d012d82e1ea)
 
-- __How do I use this with Ganache (or any other network)?__
 
-  The Truffle project is set to deploy to Ganache by default. If you'd like to change this, it's as easy as modifying the Truffle config file! Check out [our documentation on adding network configurations](https://trufflesuite.com/docs/truffle/reference/configuration/#networks). From there, you can run `truffle migrate` pointed to another network, restart the React dev server, and see the change take place.
 
-- __Where can I find more resources?__
-
-  This Box is a sweet combo of [Truffle](https://trufflesuite.com) and [Webpack](https://webpack.js.org). Either one would be a great place to start!
