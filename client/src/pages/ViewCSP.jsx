@@ -12,13 +12,13 @@ const ViewCSP=()=>{
           });
         
       
-        console.log('CSP array updated:', csps);
+        //console.log('CSP array updated:', csps);
         
       }, []);
     return (
         <div>
             <Navbar/>
-            <h1>View CSPs</h1>
+            <h1>View CSP List </h1>
             <br/>
             <h3>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
